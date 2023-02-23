@@ -19,6 +19,47 @@ public class InterpretDrawingFile {
 		chooser.showOpenDialog(null);
 		File f = new File(chooser.getSelectedFile().getPath());
 		Scanner in = new Scanner(f); //making Scanner with a File
+		String shape = in.next();
+		int red = in.nextInt();
+		int green = in.nextInt();
+		int blue = in.nextInt();
+		boolean filled = in.nextBoolean();
+		double p1 = in.nextDouble();
+		double p2 = in.nextDouble();
+		double p3 = in.nextDouble();
+		double p4 = in.nextDouble();
+		StdDraw.setPenColor(red,green,blue);
+		if(shape.equals("ellipse")){
+			if(filled) {
+				StdDraw.filledEllipse(p1, p2, p3, p4);
+			}
+			else {
+				StdDraw.ellipse(p1, p2, p3, p4);
+			}
+		}
+		if(shape.equals("rectangle")){
+			if(filled) {
+				StdDraw.filledRectangle(p1, p2, p3, p4);
+			}
+			else {
+				StdDraw.rectangle(p1, p2, p3, p4);
+			}
+		
+	}
+		if(shape.equals("triangle")){
+			double p5 = in.nextDouble();
+			double p6 = in.nextDouble();
+			double[] x = {p1,p3,p5};
+			double[] y = {p2,p4,p6};
+			if(filled) {
+				StdDraw.filledPolygon(x,y);
+			}
+			else {
+				StdDraw.polygon(x,y);
+			}
+			
+		}
+		
 		
 	}
 }
